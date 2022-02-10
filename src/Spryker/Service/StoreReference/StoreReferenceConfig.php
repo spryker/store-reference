@@ -19,6 +19,6 @@ class StoreReferenceConfig extends AbstractBundleConfig
      */
     public function getStoreNameReferenceMap(): string
     {
-        return getenv('STORE_NAME_REFERENCE_MAP');
+        return (string)getenv('STORE_NAME_REFERENCE_MAP');
     }
 }
