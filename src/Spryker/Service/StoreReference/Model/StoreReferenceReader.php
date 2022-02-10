@@ -48,13 +48,13 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
         $storeReferenceMap = array_flip($this->getStoreReferenceMap());
 
         if (!empty($storeReferenceMap[$storeReference])) {
-            return (new StoreTransfer)
-                ->setName($storeReferenceMap[$storeReference])
+            return (new StoreTransfer())
+                ->setName((string)$storeReferenceMap[$storeReference])
                 ->setStoreReference($storeReference);
         }
 
         throw new StoreReferenceNotFoundException(
-            sprintf('StoreReference: %s was not found', $storeReference)
+            sprintf('StoreReference: %s was not found', $storeReference),
         );
     }
 
@@ -70,18 +70,18 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
         $storeReferenceMap = $this->getStoreReferenceMap();
 
         if (!empty($storeReferenceMap[$storeName])) {
-            return (new StoreTransfer)
+            return (new StoreTransfer())
                 ->setName($storeName)
                 ->setStoreReference($storeReferenceMap[$storeName]);
         }
 
         throw new StoreReferenceNotFoundException(
-            sprintf('StoreReference: %s was not found', $storeReferenceMap[$storeName])
+            sprintf('StoreReference was not found by StoreName: %s', $storeName),
         );
     }
 
     /**
-     * @return array
+     * @return array<string>
      */
     protected function getStoreReferenceMap(): array
     {
@@ -91,7 +91,7 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
 
         return $this->utilEncodingService->decodeJson(
             html_entity_decode($this->storeReferenceConfig->getStoreNameReferenceMap(), ENT_QUOTES),
-            true
+            true,
         );
     }
 }

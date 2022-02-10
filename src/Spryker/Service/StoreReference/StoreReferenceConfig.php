@@ -8,14 +8,13 @@
 namespace Spryker\Service\StoreReference;
 
 use Spryker\Service\Kernel\AbstractBundleConfig;
-use Spryker\Shared\Flysystem\FlysystemConstants;
 
 class StoreReferenceConfig extends AbstractBundleConfig
 {
     /**
      * @api
      *
-     * @return array<string, mixed>
+     * @return string
      */
     public function getStoreNameReferenceMap(): string
     {

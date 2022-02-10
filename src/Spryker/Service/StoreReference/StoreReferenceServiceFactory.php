@@ -8,9 +8,9 @@
 namespace Spryker\Service\StoreReference;
 
 use Spryker\Service\Kernel\AbstractServiceFactory;
+use Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 use Spryker\Service\StoreReference\Model\StoreReferenceReader;
 use Spryker\Service\StoreReference\Model\StoreReferenceReaderInterface;
-use Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 
 /**
  * @method \Spryker\Service\StoreReference\StoreReferenceConfig getConfig()

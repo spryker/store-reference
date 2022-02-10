@@ -5,13 +5,15 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-
 namespace Spryker\Service\StoreReference;
 
 use Spryker\Service\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Service\Kernel\Container;
 use Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceBridge;
 
+/**
+ * @method \Spryker\Service\StoreReference\StoreReferenceConfig getConfig()
+ */
 class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
 {
     /**
@@ -24,7 +26,7 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
      *
      * @return \Spryker\Service\Kernel\Container
      */
-    public function provideServiceDependencies(Container $container)
+    public function provideServiceDependencies(Container $container): Container
     {
         $container = $this->addUtilEncodingService($container);
 
@@ -40,7 +42,7 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
             return new StoreReferenceToUtilEncodingServiceBridge(
-                $container->getLocator()->utilEncoding()->service()
+                $container->getLocator()->utilEncoding()->service(),
             );
         });
 
