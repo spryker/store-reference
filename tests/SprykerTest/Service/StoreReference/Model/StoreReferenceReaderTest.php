@@ -60,12 +60,14 @@ class StoreReferenceReaderTest extends Unit
      */
     public function testGetStoreByStoreReferenceThrowsExceptionWhenInputArgumentIsNotCorrect(): void
     {
+        // Arrange
+        $invalidStoreReference = '1';
+
         // Assert
         $this->expectException(StoreReferenceNotFoundException::class);
 
-        // Arrange
         // Act
-        $this->tester->getService()->getStoreByStoreReference('1');
+        $this->tester->getService()->getStoreByStoreReference($invalidStoreReference);
     }
 
     /**
@@ -90,11 +92,13 @@ class StoreReferenceReaderTest extends Unit
      */
     public function testGetStoreByStoreNameThrowsExceptionWhenInputArgumentIsNotCorrect(): void
     {
+        // Arrange
+        $invalidStoreName = '1';
+
         // Assert
         $this->expectException(StoreReferenceNotFoundException::class);
 
-        // Arrange
         // Act
-        $this->tester->getService()->getStoreByStoreName('1');
+        $this->tester->getService()->getStoreByStoreName($invalidStoreName);
     }
 }
