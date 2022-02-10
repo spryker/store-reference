@@ -40,7 +40,7 @@ class StoreReferenceService extends AbstractService implements StoreReferenceSer
      *
      * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
      *
-     * @return \Generated\Shared\Transfer\StoreTransfer|null
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
     public function getStoreByStoreName(string $storeName): StoreTransfer
     {
