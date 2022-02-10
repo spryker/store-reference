@@ -9,7 +9,41 @@
 namespace Spryker\Service\StoreReference;
 
 use Spryker\Service\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Zed\Kernel\Container;
+use Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceBridge;
 
 class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
 {
+    /**
+     * @var string
+     */
+    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
+
+    /**
+     * @param \Spryker\Service\Kernel\Container $container
+     *
+     * @return \Spryker\Service\Kernel\Container
+     */
+    public function provideServiceDependencies(\Spryker\Service\Kernel\Container $container)
+    {
+        $container = $this->addUtilEncodingService($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addUtilEncodingService(Container $container): Container
+    {
+        $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
+            return new StoreReferenceToUtilEncodingServiceBridge(
+                $container->getLocator()->utilEncoding()->service()
+            );
+        });
+
+        return $container;
+    }
 }

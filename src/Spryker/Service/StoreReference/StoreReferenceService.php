@@ -22,7 +22,7 @@ class StoreReferenceService extends AbstractService implements StoreReferenceSer
      */
     public function findStoreByStoreReference(string $storeReference): ?StoreTransfer
     {
-
+        return $this->getFactory()->createStoreReferenceMap()->findStoreByStoreReference($storeReference);
     }
 
     /**
@@ -32,6 +32,6 @@ class StoreReferenceService extends AbstractService implements StoreReferenceSer
      */
     public function findStoreByStoreName(string $storeName): ?StoreTransfer
     {
-
+        return $this->getFactory()->createStoreReferenceMap()->findStoreByStoreName($storeName);
     }
 }

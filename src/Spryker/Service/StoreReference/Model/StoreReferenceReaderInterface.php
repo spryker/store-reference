@@ -5,29 +5,23 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\StoreReference\Reader;
+namespace Spryker\Service\StoreReference\Model;
 
 use Generated\Shared\Transfer\StoreTransfer;
 
-class StoreNameReferenceMap
+interface StoreReferenceReaderInterface
 {
     /**
      * @param string $storeReference
      *
      * @return \Generated\Shared\Transfer\StoreTransfer|null
      */
-    public function findStoreByStoreReference(string $storeReference): ?StoreTransfer
-    {
-
-    }
+    public function findStoreByStoreReference(string $storeReference): ?StoreTransfer;
 
     /**
      * @param string $storeName
      *
      * @return \Generated\Shared\Transfer\StoreTransfer|null
      */
-    public function findStoreByStoreName(string $storeName): ?StoreTransfer
-    {
-
-    }
+    public function findStoreByStoreName(string $storeName): ?StoreTransfer;
 }
