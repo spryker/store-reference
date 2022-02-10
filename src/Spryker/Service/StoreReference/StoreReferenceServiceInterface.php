@@ -7,6 +7,8 @@
 
 namespace Spryker\Service\StoreReference;
 
+use Generated\Shared\Transfer\StoreTransfer;
+
 interface StoreReferenceServiceInterface
 {
     /**

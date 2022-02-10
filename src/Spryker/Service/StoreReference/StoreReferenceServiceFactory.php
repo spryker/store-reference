@@ -15,7 +15,7 @@ use Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodi
 /**
  * @method \Spryker\Service\StoreReference\StoreReferenceConfig getConfig()
  */
-class StoreReferenceFactory extends AbstractServiceFactory
+class StoreReferenceServiceFactory extends AbstractServiceFactory
 {
     /**
      * @return \Spryker\Service\StoreReference\Model\StoreReferenceReaderInterface

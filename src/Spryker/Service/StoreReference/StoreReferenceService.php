@@ -11,7 +11,7 @@ use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Service\Kernel\AbstractService;
 
 /**
- * @method \Spryker\Service\StoreReference\StoreReferenceFactory getFactory()
+ * @method \Spryker\Service\StoreReference\StoreReferenceServiceFactory getFactory()
  */
 class StoreReferenceService extends AbstractService implements StoreReferenceServiceInterface
 {

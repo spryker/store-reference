@@ -9,6 +9,8 @@ namespace Spryker\Service\StoreReference\Model;
 
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
+use Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException;
+use Spryker\Service\StoreReference\StoreReferenceConfig;
 
 class StoreReferenceReader implements StoreReferenceReaderInterface
 {
