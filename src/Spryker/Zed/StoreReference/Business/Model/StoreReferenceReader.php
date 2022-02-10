@@ -5,28 +5,28 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\StoreReference\Model;
+namespace Spryker\Zed\StoreReference\Business\Model;
 
 use Generated\Shared\Transfer\StoreTransfer;
-use Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
-use Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException;
-use Spryker\Service\StoreReference\StoreReferenceConfig;
+use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
+use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
+use Spryker\Zed\StoreReference\StoreReferenceConfig;
 
 class StoreReferenceReader implements StoreReferenceReaderInterface
 {
     /**
-     * @var \Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface
+     * @var \Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface
      */
     protected $utilEncodingService;
 
     /**
-     * @var \Spryker\Service\StoreReference\StoreReferenceConfig
+     * @var \Spryker\Zed\StoreReference\StoreReferenceConfig
      */
     protected $storeReferenceConfig;
 
     /**
-     * @param \Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface $utilEncodingService
-     * @param \Spryker\Service\StoreReference\StoreReferenceConfig $storeReferenceConfig
+     * @param \Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface $utilEncodingService
+     * @param \Spryker\Zed\StoreReference\StoreReferenceConfig $storeReferenceConfig
      */
     public function __construct(
         StoreReferenceToUtilEncodingServiceInterface $utilEncodingService,
@@ -39,7 +39,7 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     /**
      * @param string $storeReference
      *
-     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
@@ -61,7 +61,7 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     /**
      * @param string $storeName
      *
-     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */

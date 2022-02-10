@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\StoreReference\Exception;
+namespace Spryker\Zed\StoreReference\Business\Exception;
 
 use Exception;
 

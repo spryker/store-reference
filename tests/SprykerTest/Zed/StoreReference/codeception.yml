@@ -1,4 +1,4 @@
-namespace: SprykerTest\Service\StoreReference
+namespace: SprykerTest\Zed\StoreReference
 
 paths:
     tests: .
@@ -22,4 +22,4 @@ suites:
                 - \SprykerTest\Shared\Testify\Helper\ConfigHelper
                 - \SprykerTest\Shared\Testify\Helper\LocatorHelper
                 - \SprykerTest\Shared\Testify\Helper\DependencyHelper
-                - \SprykerTest\Service\Testify\Helper\ServiceHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper

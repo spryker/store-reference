@@ -5,11 +5,11 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\StoreReference;
+namespace Spryker\Zed\StoreReference\Business;
 
 use Generated\Shared\Transfer\StoreTransfer;
 
-interface StoreReferenceServiceInterface
+interface StoreReferenceFacadeInterface
 {
     /**
      * Specification:
@@ -19,7 +19,7 @@ interface StoreReferenceServiceInterface
      *
      * @param string $storeReference
      *
-     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
@@ -33,7 +33,7 @@ interface StoreReferenceServiceInterface
      *
      * @param string $storeName
      *
-     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */

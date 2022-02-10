@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\StoreReference\Dependency\Service;
+namespace Spryker\Zed\StoreReference\Dependency\Service;
 
 class StoreReferenceToUtilEncodingServiceBridge implements StoreReferenceToUtilEncodingServiceInterface
 {

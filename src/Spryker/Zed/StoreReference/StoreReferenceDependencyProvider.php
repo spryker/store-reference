@@ -5,14 +5,14 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\StoreReference;
+namespace Spryker\Zed\StoreReference;
 
-use Spryker\Service\Kernel\AbstractBundleDependencyProvider;
-use Spryker\Service\Kernel\Container;
-use Spryker\Service\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceBridge;
+use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
+use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceBridge;
 
 /**
- * @method \Spryker\Service\StoreReference\StoreReferenceConfig getConfig()
+ * @method \Spryker\Zed\StoreReference\StoreReferenceConfig getConfig()
  */
 class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
 {
@@ -22,11 +22,11 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
     /**
-     * @param \Spryker\Service\Kernel\Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Service\Kernel\Container
+     * @return \Spryker\Zed\Kernel\Container
      */
-    public function provideServiceDependencies(Container $container): Container
+    public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addUtilEncodingService($container);
 
@@ -34,9 +34,9 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
     }
 
     /**
-     * @param \Spryker\Service\Kernel\Container $container
+     * @param \Spryker\Zed\Kernel\Container $container
      *
-     * @return \Spryker\Service\Kernel\Container
+     * @return \Spryker\Zed\Kernel\Container
      */
     protected function addUtilEncodingService(Container $container): Container
     {

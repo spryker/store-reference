@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Service\StoreReference;
+namespace SprykerTest\Zed\StoreReference;
 
 use Codeception\Actor;
 
@@ -20,7 +20,7 @@ use Codeception\Actor;
  * @method void lookForwardTo($achieveValue)
  * @method void comment($description)
  * @method \Codeception\Lib\Friend haveFriend($name, $actorClass = null)
- * @method \Spryker\Service\StoreReference\StoreReferenceServiceInterface getService(?string $moduleName = NULL)
+ * @method \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface getFacade(?string $moduleName = NULL)
  *
  * @SuppressWarnings(PHPMD)
  */

@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\StoreReference\Model;
+namespace Spryker\Zed\StoreReference\Business\Model;
 
 use Generated\Shared\Transfer\StoreTransfer;
 

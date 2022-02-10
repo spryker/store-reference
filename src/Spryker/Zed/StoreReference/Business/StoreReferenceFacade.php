@@ -5,15 +5,15 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Service\StoreReference;
+namespace Spryker\Zed\StoreReference\Business;
 
 use Generated\Shared\Transfer\StoreTransfer;
-use Spryker\Service\Kernel\AbstractService;
+use Spryker\Zed\Kernel\Business\AbstractFacade;
 
 /**
- * @method \Spryker\Service\StoreReference\StoreReferenceServiceFactory getFactory()
+ * @method \Spryker\Zed\StoreReference\Business\StoreReferenceBusinessFactory getFactory()
  */
-class StoreReferenceService extends AbstractService implements StoreReferenceServiceInterface
+class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacadeInterface
 {
     /**
      * {@inheritDoc}
@@ -22,7 +22,7 @@ class StoreReferenceService extends AbstractService implements StoreReferenceSer
      *
      * @param string $storeReference
      *
-     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
@@ -38,7 +38,7 @@ class StoreReferenceService extends AbstractService implements StoreReferenceSer
      *
      * @param string $storeName
      *
-     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */

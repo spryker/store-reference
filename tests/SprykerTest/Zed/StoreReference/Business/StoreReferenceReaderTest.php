@@ -5,9 +5,9 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace SprykerTest\Service\StoreReference\Model;
+namespace SprykerTest\Zed\StoreReference\Business;
 
-use Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException;
+use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\StoreTransfer;
 
@@ -34,7 +34,7 @@ class StoreReferenceReaderTest extends Unit
     const STORE_MAME = 'DE';
 
     /**
-     * @var \SprykerTest\Service\StoreReference\StoreReferenceTester
+     * @var \SprykerTest\Zed\StoreReference\StoreReferenceTester
      */
     protected $tester;
 
@@ -49,7 +49,7 @@ class StoreReferenceReaderTest extends Unit
             ->setStoreReference(static::STORE_REFERENCE);
 
         // Act
-        $storeTransfer = $this->tester->getService()->getStoreByStoreReference(static::STORE_REFERENCE);
+        $storeTransfer = $this->tester->getFacade()->getStoreByStoreReference(static::STORE_REFERENCE);
 
         // Assert
         $this->assertEquals($expectedStoreTrasfer, $storeTransfer);
@@ -67,7 +67,7 @@ class StoreReferenceReaderTest extends Unit
         $this->expectException(StoreReferenceNotFoundException::class);
 
         // Act
-        $this->tester->getService()->getStoreByStoreReference($invalidStoreReference);
+        $this->tester->getFacade()->getStoreByStoreReference($invalidStoreReference);
     }
 
     /**
@@ -81,7 +81,7 @@ class StoreReferenceReaderTest extends Unit
             ->setStoreReference(static::STORE_REFERENCE);
 
         // Act
-        $storeTransfer = $this->tester->getService()->getStoreByStoreName(static::STORE_MAME);
+        $storeTransfer = $this->tester->getFacade()->getStoreByStoreName(static::STORE_MAME);
 
         // Assert
         $this->assertEquals($expectedStoreTrasfer, $storeTransfer);
@@ -99,6 +99,6 @@ class StoreReferenceReaderTest extends Unit
         $this->expectException(StoreReferenceNotFoundException::class);
 
         // Act
-        $this->tester->getService()->getStoreByStoreName($invalidStoreName);
+        $this->tester->getFacade()->getStoreByStoreName($invalidStoreName);
     }
 }
