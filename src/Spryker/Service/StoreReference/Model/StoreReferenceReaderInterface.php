@@ -14,14 +14,14 @@ interface StoreReferenceReaderInterface
     /**
      * @param string $storeReference
      *
-     * @return \Generated\Shared\Transfer\StoreTransfer|null
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function findStoreByStoreReference(string $storeReference): ?StoreTransfer;
+    public function getStoreByStoreReference(string $storeReference): StoreTransfer;
 
     /**
      * @param string $storeName
      *
-     * @return \Generated\Shared\Transfer\StoreTransfer|null
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function findStoreByStoreName(string $storeName): ?StoreTransfer;
+    public function getStoreByStoreName(string $storeName): StoreTransfer;
 }

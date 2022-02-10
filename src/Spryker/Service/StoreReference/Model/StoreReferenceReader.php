@@ -37,9 +37,11 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     /**
      * @param string $storeReference
      *
-     * @return \Generated\Shared\Transfer\StoreTransfer|null
+     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function findStoreByStoreReference(string $storeReference): ?StoreTransfer
+    public function getStoreByStoreReference(string $storeReference): StoreTransfer
     {
         $storeReferenceMap = array_flip($this->getStoreReferenceMap());
 
@@ -49,15 +51,19 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
                 ->setStoreReference($storeReference);
         }
 
-        return null;
+        throw new StoreReferenceNotFoundException(
+            sprintf('StoreReference: %s was not found', $storeReference)
+        );
     }
 
     /**
      * @param string $storeName
      *
-     * @return \Generated\Shared\Transfer\StoreTransfer|null
+     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function findStoreByStoreName(string $storeName): ?StoreTransfer
+    public function getStoreByStoreName(string $storeName): StoreTransfer
     {
         $storeReferenceMap = $this->getStoreReferenceMap();
 
@@ -67,7 +73,9 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
                 ->setStoreReference($storeReferenceMap[$storeName]);
         }
 
-        return null;
+        throw new StoreReferenceNotFoundException(
+            sprintf('StoreReference: %s was not found', $storeReferenceMap[$storeName])
+        );
     }
 
     /**

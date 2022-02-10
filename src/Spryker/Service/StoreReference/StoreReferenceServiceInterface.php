@@ -10,16 +10,30 @@ namespace Spryker\Service\StoreReference;
 interface StoreReferenceServiceInterface
 {
     /**
+     * Specification:
+     * - Returns StoreTransfer by $storeReference.
+     *
+     * @api
+     *
      * @param string $storeReference
      *
-     * @return \Generated\Shared\Transfer\StoreTransfer|null
+     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function findStoreByStoreReference(string $storeReference): ?StoreTransfer;
+    public function getStoreByStoreReference(string $storeReference): StoreTransfer;
 
     /**
+     * Specification:
+     * - Returns StoreTransfer by $storeName.
+     *
+     * @api
+     *
      * @param string $storeName
      *
-     * @return \Generated\Shared\Transfer\StoreTransfer|null
+     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function findStoreByStoreName(string $storeName): ?StoreTransfer;
+    public function getStoreByStoreName(string $storeName): StoreTransfer;
 }

@@ -16,22 +16,34 @@ use Spryker\Service\Kernel\AbstractService;
 class StoreReferenceService extends AbstractService implements StoreReferenceServiceInterface
 {
     /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
      * @param string $storeReference
      *
-     * @return \Generated\Shared\Transfer\StoreTransfer|null
+     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
      */
-    public function findStoreByStoreReference(string $storeReference): ?StoreTransfer
+    public function getStoreByStoreReference(string $storeReference): StoreTransfer
     {
-        return $this->getFactory()->createStoreReferenceMap()->findStoreByStoreReference($storeReference);
+        return $this->getFactory()->createStoreReferenceMap()->getStoreByStoreReference($storeReference);
     }
 
     /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
      * @param string $storeName
+     *
+     * @throws \Spryker\Service\StoreReference\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer|null
      */
-    public function findStoreByStoreName(string $storeName): ?StoreTransfer
+    public function getStoreByStoreName(string $storeName): StoreTransfer
     {
-        return $this->getFactory()->createStoreReferenceMap()->findStoreByStoreName($storeName);
+        return $this->getFactory()->createStoreReferenceMap()->getStoreByStoreName($storeName);
     }
 }
