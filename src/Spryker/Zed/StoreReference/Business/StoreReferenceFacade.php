@@ -22,7 +22,7 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
      *
      * @param string $storeReference
      *
-     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
@@ -38,7 +38,7 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
      *
      * @param string $storeName
      *
-     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */

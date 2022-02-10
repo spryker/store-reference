@@ -19,7 +19,7 @@ interface StoreReferenceFacadeInterface
      *
      * @param string $storeReference
      *
-     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
@@ -33,7 +33,7 @@ interface StoreReferenceFacadeInterface
      *
      * @param string $storeName
      *
-     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */

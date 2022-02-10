@@ -7,10 +7,13 @@
 
 namespace Spryker\Zed\StoreReference\Business;
 
+use Spryker\Zed\AssetExternal\AssetExternalDependencyProvider;
+use Spryker\Zed\AssetExternal\Dependency\Facade\AssetExternalToStoreBridgeInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
-use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 use Spryker\Zed\StoreReference\Business\Model\StoreReferenceReader;
 use Spryker\Zed\StoreReference\Business\Model\StoreReferenceReaderInterface;
+use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
+use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 use Spryker\Zed\StoreReference\StoreReferenceDependencyProvider;
 
 /**
@@ -26,6 +29,7 @@ class StoreReferenceBusinessFactory extends AbstractBusinessFactory
         return new StoreReferenceReader(
             $this->getUtilEncodingService(),
             $this->getConfig(),
+            $this->getStoreFacade(),
         );
     }
 
@@ -35,5 +39,13 @@ class StoreReferenceBusinessFactory extends AbstractBusinessFactory
     public function getUtilEncodingService(): StoreReferenceToUtilEncodingServiceInterface
     {
         return $this->getProvidedDependency(StoreReferenceDependencyProvider::SERVICE_UTIL_ENCODING);
+    }
+
+    /**
+     * @return \Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface
+     */
+    public function getStoreFacade(): StoreReferenceToStoreInterface
+    {
+        return $this->getProvidedDependency(StoreReferenceDependencyProvider::FACADE_STORE);
     }
 }

@@ -7,32 +7,22 @@
 
 namespace SprykerTest\Zed\StoreReference\Business;
 
-use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
 use Codeception\Test\Unit;
 use Generated\Shared\Transfer\StoreTransfer;
+use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
 
 /**
  * Auto-generated group annotations
  *
  * @group SprykerTest
- * @group Service
+ * @group Zed
  * @group StoreReference
- * @group Model
+ * @group Business
  * @group StoreReferenceReaderTest
  * Add your own group annotations below this line
  */
 class StoreReferenceReaderTest extends Unit
 {
-    /**
-     * @var string
-     */
-    const STORE_REFERENCE = 'development_test-DE';
-
-    /**
-     * @var string
-     */
-    const STORE_MAME = 'DE';
-
     /**
      * @var \SprykerTest\Zed\StoreReference\StoreReferenceTester
      */
@@ -44,15 +34,15 @@ class StoreReferenceReaderTest extends Unit
     public function testGetStoreByStoreReferenceReturnsExpectedTransferWhenInputArgumentIsCorrect(): void
     {
         // Arrange
-        $expectedStoreTrasfer = (new StoreTransfer())
-            ->setName(static::STORE_MAME)
-            ->setStoreReference(static::STORE_REFERENCE);
+        $storeReference = 'development_test-DE';
+        $storeName = 'DE';
 
         // Act
-        $storeTransfer = $this->tester->getFacade()->getStoreByStoreReference(static::STORE_REFERENCE);
+        $storeTransfer = $this->tester->getFacade()->getStoreByStoreReference($storeReference);
 
         // Assert
-        $this->assertEquals($expectedStoreTrasfer, $storeTransfer);
+        $this->assertEquals($storeReference, $storeTransfer->getStoreReference());
+        $this->assertEquals($storeName, $storeTransfer->getName());
     }
 
     /**
@@ -76,15 +66,15 @@ class StoreReferenceReaderTest extends Unit
     public function testGetStoreByStoreNameReturnsExpectedTransferWhenInputArgumentIsCorrect(): void
     {
         // Arrange
-        $expectedStoreTrasfer = (new StoreTransfer())
-            ->setName(static::STORE_MAME)
-            ->setStoreReference(static::STORE_REFERENCE);
+        $storeReference = 'development_test-AT';
+        $storeName = 'AT';
 
         // Act
-        $storeTransfer = $this->tester->getFacade()->getStoreByStoreName(static::STORE_MAME);
+        $storeTransfer = $this->tester->getFacade()->getStoreByStoreName($storeName);
 
         // Assert
-        $this->assertEquals($expectedStoreTrasfer, $storeTransfer);
+        $this->assertEquals($storeReference, $storeTransfer->getStoreReference());
+        $this->assertEquals($storeName, $storeTransfer->getName());
     }
 
     /**

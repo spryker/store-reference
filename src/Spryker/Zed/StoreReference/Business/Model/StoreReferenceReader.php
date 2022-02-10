@@ -8,8 +8,9 @@
 namespace Spryker\Zed\StoreReference\Business\Model;
 
 use Generated\Shared\Transfer\StoreTransfer;
-use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
+use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
+use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 use Spryker\Zed\StoreReference\StoreReferenceConfig;
 
 class StoreReferenceReader implements StoreReferenceReaderInterface
@@ -25,21 +26,29 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     protected $storeReferenceConfig;
 
     /**
+     * @var \Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface
+     */
+    protected $storeFacade;
+
+    /**
      * @param \Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface $utilEncodingService
      * @param \Spryker\Zed\StoreReference\StoreReferenceConfig $storeReferenceConfig
+     * @param \Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface $storeFacade
      */
     public function __construct(
         StoreReferenceToUtilEncodingServiceInterface $utilEncodingService,
-        StoreReferenceConfig $storeReferenceConfig
+        StoreReferenceConfig $storeReferenceConfig,
+        StoreReferenceToStoreInterface $storeFacade
     ) {
         $this->utilEncodingService = $utilEncodingService;
         $this->storeReferenceConfig = $storeReferenceConfig;
+        $this->storeFacade = $storeFacade;
     }
 
     /**
      * @param string $storeReference
      *
-     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
@@ -48,9 +57,10 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
         $storeReferenceMap = array_flip($this->getStoreReferenceMap());
 
         if (!empty($storeReferenceMap[$storeReference])) {
-            return (new StoreTransfer())
-                ->setName((string)$storeReferenceMap[$storeReference])
-                ->setStoreReference($storeReference);
+            $storeTransfer = $this->storeFacade->getStoreByName($storeReferenceMap[$storeReference]);
+            $storeTransfer->setStoreReference($storeReference);
+
+            return $storeTransfer;
         }
 
         throw new StoreReferenceNotFoundException(
@@ -61,7 +71,7 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     /**
      * @param string $storeName
      *
-     * @throws \Spryker\Zed\StoreReference\Exception\StoreReferenceNotFoundException
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
@@ -70,9 +80,10 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
         $storeReferenceMap = $this->getStoreReferenceMap();
 
         if (!empty($storeReferenceMap[$storeName])) {
-            return (new StoreTransfer())
-                ->setName($storeName)
-                ->setStoreReference($storeReferenceMap[$storeName]);
+            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
+            $storeTransfer->setStoreReference($storeReferenceMap[$storeName]);
+
+            return $storeTransfer;
         }
 
         throw new StoreReferenceNotFoundException(

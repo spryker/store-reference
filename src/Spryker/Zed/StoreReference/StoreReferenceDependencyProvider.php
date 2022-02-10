@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\StoreReference;
 
+use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreBridge;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
 use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceBridge;
@@ -22,6 +23,11 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
     public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
 
     /**
+     * @var string
+     */
+    public const FACADE_STORE = 'FACADE_STORE';
+
+    /**
      * @param \Spryker\Zed\Kernel\Container $container
      *
      * @return \Spryker\Zed\Kernel\Container
@@ -29,6 +35,21 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
     public function provideBusinessLayerDependencies(Container $container): Container
     {
         $container = $this->addUtilEncodingService($container);
+        $container = $this->addStoreFacade($container);
+
+        return $container;
+    }
+
+    /**
+     * @param \Spryker\Zed\Kernel\Container $container
+     *
+     * @return \Spryker\Zed\Kernel\Container
+     */
+    protected function addStoreFacade(Container $container): Container
+    {
+        $container->set(static::FACADE_STORE, function (Container $container) {
+            return new StoreReferenceToStoreBridge($container->getLocator()->store()->facade());
+        });
 
         return $container;
     }
