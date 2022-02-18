@@ -7,9 +7,9 @@
 
 namespace Spryker\Zed\StoreReference;
 
-use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreBridge;
 use Spryker\Zed\Kernel\AbstractBundleDependencyProvider;
 use Spryker\Zed\Kernel\Container;
+use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreBridge;
 use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceBridge;
 
 /**

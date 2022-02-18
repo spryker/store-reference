@@ -8,7 +8,6 @@
 namespace SprykerTest\Zed\StoreReference\Business;
 
 use Codeception\Test\Unit;
-use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
 
 /**

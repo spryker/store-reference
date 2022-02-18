@@ -56,16 +56,17 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     {
         $storeReferenceMap = array_flip($this->getStoreReferenceMap());
 
-        if (!empty($storeReferenceMap[$storeReference])) {
-            $storeTransfer = $this->storeFacade->getStoreByName($storeReferenceMap[$storeReference]);
-            $storeTransfer->setStoreReference($storeReference);
-
-            return $storeTransfer;
+        if (empty($storeReferenceMap[$storeReference])) {
+            throw new StoreReferenceNotFoundException(
+                sprintf('StoreReference: %s was not found', $storeReference),
+            );
         }
 
-        throw new StoreReferenceNotFoundException(
-            sprintf('StoreReference: %s was not found', $storeReference),
-        );
+        /** @var \Generated\Shared\Transfer\StoreTransfer $storeTransfer */
+        $storeTransfer = $this->storeFacade->getStoreByName((string)$storeReferenceMap[$storeReference]);
+        $storeTransfer->setStoreReference($storeReference);
+
+        return $storeTransfer;
     }
 
     /**
@@ -79,16 +80,17 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     {
         $storeReferenceMap = $this->getStoreReferenceMap();
 
-        if (!empty($storeReferenceMap[$storeName])) {
-            $storeTransfer = $this->storeFacade->getStoreByName($storeName);
-            $storeTransfer->setStoreReference($storeReferenceMap[$storeName]);
-
-            return $storeTransfer;
+        if (empty($storeReferenceMap[$storeName])) {
+            throw new StoreReferenceNotFoundException(
+                sprintf('StoreReference was not found by StoreName: %s', $storeName),
+            );
         }
 
-        throw new StoreReferenceNotFoundException(
-            sprintf('StoreReference was not found by StoreName: %s', $storeName),
-        );
+        /** @var \Generated\Shared\Transfer\StoreTransfer $storeTransfer */
+        $storeTransfer = $this->storeFacade->getStoreByName($storeName);
+        $storeTransfer->setStoreReference($storeReferenceMap[$storeName]);
+
+        return $storeTransfer;
     }
 
     /**

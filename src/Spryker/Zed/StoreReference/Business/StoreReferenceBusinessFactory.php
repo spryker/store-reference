@@ -7,8 +7,6 @@
 
 namespace Spryker\Zed\StoreReference\Business;
 
-use Spryker\Zed\AssetExternal\AssetExternalDependencyProvider;
-use Spryker\Zed\AssetExternal\Dependency\Facade\AssetExternalToStoreBridgeInterface;
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use Spryker\Zed\StoreReference\Business\Model\StoreReferenceReader;
 use Spryker\Zed\StoreReference\Business\Model\StoreReferenceReaderInterface;
