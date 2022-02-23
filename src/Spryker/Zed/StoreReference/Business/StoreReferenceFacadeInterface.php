@@ -14,8 +14,8 @@ interface StoreReferenceFacadeInterface
     /**
      * Specification:
      * - Returns StoreTransfer by $storeReference.
-     * - Decodes STORE_NAME_REFERENCE_MAP.
-     * - Uses StoreFacade to get the store by reference.
+     * - Decodes STORE_NAME_REFERENCE_MAP and uses the Store module to get the store.
+     * - The StoreTransfer is extended before being returned.
      *
      * @api
      *
@@ -30,8 +30,8 @@ interface StoreReferenceFacadeInterface
     /**
      * Specification:
      * - Returns StoreTransfer by $storeName.
-     * - Decodes STORE_NAME_REFERENCE_MAP.
-     * - Uses StoreFacade to get the store by name.
+     * - Decodes STORE_NAME_REFERENCE_MAP and uses the Store module to get the store.
+     * - The StoreTransfer is extended before being returned.
      *
      * @api
      *
