@@ -14,14 +14,14 @@ class StoreReferenceConfig extends AbstractBundleConfig
     /**
      * @api
      *
-     * @return string
-     *
      * @example The format of returned JSON:
      * {
      *     "DE": "dev-DE",
      *     "AT": "dev-AT",
      *     "STORE_NAME_A": "STORE_REFERENCE_A"
      * }
+     *
+     * @return string
      */
     public function getStoreNameReferenceMap(): string
     {
