@@ -35,10 +35,7 @@ class StoreReferenceReaderTest extends Unit
         // Arrange
         $storeReference = 'development_test-DE';
         $storeName = 'DE';
-        $this->tester->mockConfigMethod(
-            'getStoreNameReferenceMap',
-            sprintf('{"%s":"%s"}', $storeName, $storeReference),
-        );
+        $this->tester->setStoreReferenceData([$storeName => $storeReference]);
 
         // Act
         $storeTransfer = $this->tester->getFacade()->getStoreByStoreReference($storeReference);
@@ -71,10 +68,7 @@ class StoreReferenceReaderTest extends Unit
         // Arrange
         $storeReference = 'development_test-AT';
         $storeName = 'AT';
-        $this->tester->mockConfigMethod(
-            'getStoreNameReferenceMap',
-            sprintf('{"%s":"%s"}', $storeName, $storeReference),
-        );
+        $this->tester->setStoreReferenceData([$storeName => $storeReference]);
 
         // Act
         $storeTransfer = $this->tester->getFacade()->getStoreByStoreName($storeName);
