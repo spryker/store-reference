@@ -1,6 +1,6 @@
 namespace: StoreReference
 include:
-    - tests/SprykerTest/Service/StoreReference
+    - tests/SprykerTest/Zed/StoreReference
 paths:
     tests: tests
     log: tests/_output
