@@ -9,7 +9,6 @@ namespace SprykerTest\Zed\StoreReference\Business;
 
 use Codeception\Test\Unit;
 use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
-use SprykerTest\Zed\StoreReference\StoreReferenceTester;
 
 /**
  * Auto-generated group annotations
@@ -31,24 +30,19 @@ class StoreReferenceReaderTest extends Unit
     /**
      * @return void
      */
-    public function setUp(): void
-    {
-        parent::setUp();
-
-        $this->tester->mockConfig();
-    }
-
-    /**
-     * @return void
-     */
     public function testGetStoreByStoreReferenceReturnsExpectedTransferWhenInputArgumentIsCorrect(): void
     {
+        // Arrange
+        $storeReference = 'development_test-DE';
+        $storeName = 'DE';
+        $this->tester->setStoreReferenceData([$storeName => $storeReference]);
+
         // Act
-        $storeTransfer = $this->tester->getFacade()->getStoreByStoreReference(StoreReferenceTester::STORE_REFERENCE);
+        $storeTransfer = $this->tester->getFacade()->getStoreByStoreReference($storeReference);
 
         // Assert
-        $this->assertEquals(StoreReferenceTester::STORE_REFERENCE, $storeTransfer->getStoreReference());
-        $this->assertEquals(StoreReferenceTester::STORE_NAME, $storeTransfer->getName());
+        $this->assertEquals($storeReference, $storeTransfer->getStoreReference());
+        $this->assertEquals($storeName, $storeTransfer->getName());
     }
 
     /**
@@ -71,12 +65,17 @@ class StoreReferenceReaderTest extends Unit
      */
     public function testGetStoreByStoreNameReturnsExpectedTransferWhenInputArgumentIsCorrect(): void
     {
+        // Arrange
+        $storeReference = 'development_test-AT';
+        $storeName = 'AT';
+        $this->tester->setStoreReferenceData([$storeName => $storeReference]);
+
         // Act
-        $storeTransfer = $this->tester->getFacade()->getStoreByStoreName(StoreReferenceTester::STORE_NAME);
+        $storeTransfer = $this->tester->getFacade()->getStoreByStoreName($storeName);
 
         // Assert
-        $this->assertEquals(StoreReferenceTester::STORE_REFERENCE, $storeTransfer->getStoreReference());
-        $this->assertEquals(StoreReferenceTester::STORE_NAME, $storeTransfer->getName());
+        $this->assertEquals($storeReference, $storeTransfer->getStoreReference());
+        $this->assertEquals($storeName, $storeTransfer->getName());
     }
 
     /**

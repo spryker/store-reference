@@ -27,25 +27,4 @@ use Codeception\Actor;
 class StoreReferenceTester extends Actor
 {
     use _generated\StoreReferenceTesterActions;
-
-    /**
-     * @var string
-     */
-    public const STORE_REFERENCE = 'dev-DE';
-
-    /**
-     * @var string
-     */
-    public const STORE_NAME = 'DE';
-
-    /**
-     * @return void
-     */
-    public function mockConfig(): void
-    {
-        $this->mockConfigMethod(
-            'getStoreNameReferenceMap',
-            json_encode([static::STORE_NAME => static::STORE_REFERENCE]),
-        );
-    }
 }
