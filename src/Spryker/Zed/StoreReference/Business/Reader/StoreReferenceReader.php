@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\StoreReference\Business\Model;
+namespace Spryker\Zed\StoreReference\Business\Reader;
 
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
@@ -58,7 +58,11 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
 
         if (empty($storeReferenceMap[$storeReference])) {
             throw new StoreReferenceNotFoundException(
-                sprintf('StoreReference: %s was not found', $storeReference),
+                sprintf(
+                    'Could not get a store name by store-reference %s. Please check your configuration in %s::getStoreNameReferenceMap()',
+                    $storeReference,
+                    StoreReferenceConfig::class,
+                ),
             );
         }
 
