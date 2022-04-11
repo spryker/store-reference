@@ -17,4 +17,9 @@ interface StoreReferenceToStoreInterface
      * @return \Generated\Shared\Transfer\StoreTransfer|null
      */
     public function getStoreByName(string $storeName): ?StoreTransfer;
+
+    /**
+     * @return \Generated\Shared\Transfer\StoreTransfer
+     */
+    public function getCurrentStore(): StoreTransfer;
 }
