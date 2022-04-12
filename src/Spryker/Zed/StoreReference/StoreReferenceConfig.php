@@ -22,7 +22,7 @@ class StoreReferenceConfig extends AbstractBundleConfig
      *     "STORE_NAME_A": "STORE_REFERENCE_A"
      * ]
      *
-     * @return array
+     * @return array<mixed>
      */
     public function getStoreNameReferenceMap(): array
     {
