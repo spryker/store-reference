@@ -14,9 +14,9 @@ interface StoreReferenceAccessTokenRequestExpanderInterface
     /**
      * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
      *
-     * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
-     *
      * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
      */
     public function expand(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer;
 }

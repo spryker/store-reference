@@ -38,7 +38,7 @@ class StoreReferenceHelper extends Module
             $this->isStoreNameReferenceMapMustBeRestored = true;
         }
 
-        putenv(sprintf('%s=%s',static::STORE_NAME_REFERENCE_MAP_ENV_NAME,  json_encode($storeReferenceData)));
+        putenv(sprintf('%s=%s', static::STORE_NAME_REFERENCE_MAP_ENV_NAME, json_encode($storeReferenceData)));
     }
 
     /**
