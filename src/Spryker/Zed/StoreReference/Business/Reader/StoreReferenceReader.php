@@ -10,16 +10,10 @@ namespace Spryker\Zed\StoreReference\Business\Reader;
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException;
 use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
-use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 use Spryker\Zed\StoreReference\StoreReferenceConfig;
 
 class StoreReferenceReader implements StoreReferenceReaderInterface
 {
-    /**
-     * @var \Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface
-     */
-    protected $utilEncodingService;
-
     /**
      * @var \Spryker\Zed\StoreReference\StoreReferenceConfig
      */
@@ -31,16 +25,13 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     protected $storeFacade;
 
     /**
-     * @param \Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface $utilEncodingService
      * @param \Spryker\Zed\StoreReference\StoreReferenceConfig $storeReferenceConfig
      * @param \Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface $storeFacade
      */
     public function __construct(
-        StoreReferenceToUtilEncodingServiceInterface $utilEncodingService,
         StoreReferenceConfig $storeReferenceConfig,
         StoreReferenceToStoreInterface $storeFacade
     ) {
-        $this->utilEncodingService = $utilEncodingService;
         $this->storeReferenceConfig = $storeReferenceConfig;
         $this->storeFacade = $storeFacade;
     }
@@ -54,7 +45,7 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
      */
     public function getStoreByStoreReference(string $storeReference): StoreTransfer
     {
-        $storeReferenceMap = array_flip($this->getStoreReferenceMap());
+        $storeReferenceMap = array_flip($this->storeReferenceConfig->getStoreNameReferenceMap());
 
         if (empty($storeReferenceMap[$storeReference])) {
             throw new StoreReferenceNotFoundException(
@@ -82,7 +73,7 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
      */
     public function getStoreByStoreName(string $storeName): StoreTransfer
     {
-        $storeReferenceMap = $this->getStoreReferenceMap();
+        $storeReferenceMap = $this->storeReferenceConfig->getStoreNameReferenceMap();
 
         if (empty($storeReferenceMap[$storeName])) {
             throw new StoreReferenceNotFoundException(
@@ -95,20 +86,5 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
         $storeTransfer->setStoreReference($storeReferenceMap[$storeName]);
 
         return $storeTransfer;
-    }
-
-    /**
-     * @return array<string>
-     */
-    protected function getStoreReferenceMap(): array
-    {
-        if (!$this->storeReferenceConfig->getStoreNameReferenceMap()) {
-            return [];
-        }
-
-        return $this->utilEncodingService->decodeJson(
-            html_entity_decode($this->storeReferenceConfig->getStoreNameReferenceMap(), ENT_QUOTES),
-            true,
-        );
     }
 }

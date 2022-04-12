@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\StoreReference;
 
+use Spryker\Shared\StoreReference\StoreReferenceConstants;
 use Spryker\Zed\Kernel\AbstractBundleConfig;
 
 class StoreReferenceConfig extends AbstractBundleConfig
@@ -14,17 +15,17 @@ class StoreReferenceConfig extends AbstractBundleConfig
     /**
      * @api
      *
-     * @example The format of returned JSON:
-     * {
+     * @example
+     * [
      *     "DE": "dev-DE",
      *     "AT": "dev-AT",
      *     "STORE_NAME_A": "STORE_REFERENCE_A"
-     * }
+     * ]
      *
-     * @return string
+     * @return array
      */
-    public function getStoreNameReferenceMap(): string
+    public function getStoreNameReferenceMap(): array
     {
-        return (string)getenv('STORE_NAME_REFERENCE_MAP');
+        return $this->get(StoreReferenceConstants::STORE_NAME_REFERENCE_MAP, []);
     }
 }

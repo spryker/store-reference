@@ -33,7 +33,7 @@ class StoreReferenceReaderTest extends Unit
     public function testGetStoreByStoreReferenceReturnsExpectedTransferWhenInputArgumentIsCorrect(): void
     {
         // Arrange
-        $storeReference = 'development_test-DE';
+        $storeReference = 'dev-DE';
         $storeName = 'DE';
         $this->tester->setStoreReferenceData([$storeName => $storeReference]);
 
@@ -66,7 +66,7 @@ class StoreReferenceReaderTest extends Unit
     public function testGetStoreByStoreNameReturnsExpectedTransferWhenInputArgumentIsCorrect(): void
     {
         // Arrange
-        $storeReference = 'development_test-AT';
+        $storeReference = 'dev-AT';
         $storeName = 'AT';
         $this->tester->setStoreReferenceData([$storeName => $storeReference]);
 

@@ -11,7 +11,6 @@ use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
 use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReader;
 use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface;
 use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
-use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 use Spryker\Zed\StoreReference\StoreReferenceDependencyProvider;
 
 /**
@@ -25,18 +24,9 @@ class StoreReferenceBusinessFactory extends AbstractBusinessFactory
     public function createStoreReferenceMap(): StoreReferenceReaderInterface
     {
         return new StoreReferenceReader(
-            $this->getUtilEncodingService(),
             $this->getConfig(),
             $this->getStoreFacade(),
         );
-    }
-
-    /**
-     * @return \Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface
-     */
-    public function getUtilEncodingService(): StoreReferenceToUtilEncodingServiceInterface
-    {
-        return $this->getProvidedDependency(StoreReferenceDependencyProvider::SERVICE_UTIL_ENCODING);
     }
 
     /**

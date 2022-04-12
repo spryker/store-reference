@@ -20,11 +20,6 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
     /**
      * @var string
      */
-    public const SERVICE_UTIL_ENCODING = 'SERVICE_UTIL_ENCODING';
-
-    /**
-     * @var string
-     */
     public const FACADE_STORE = 'FACADE_STORE';
 
     /**
@@ -34,7 +29,6 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
      */
     public function provideBusinessLayerDependencies(Container $container): Container
     {
-        $container = $this->addUtilEncodingService($container);
         $container = $this->addStoreFacade($container);
 
         return $container;
@@ -49,22 +43,6 @@ class StoreReferenceDependencyProvider extends AbstractBundleDependencyProvider
     {
         $container->set(static::FACADE_STORE, function (Container $container) {
             return new StoreReferenceToStoreBridge($container->getLocator()->store()->facade());
-        });
-
-        return $container;
-    }
-
-    /**
-     * @param \Spryker\Zed\Kernel\Container $container
-     *
-     * @return \Spryker\Zed\Kernel\Container
-     */
-    protected function addUtilEncodingService(Container $container): Container
-    {
-        $container->set(static::SERVICE_UTIL_ENCODING, function (Container $container) {
-            return new StoreReferenceToUtilEncodingServiceBridge(
-                $container->getLocator()->utilEncoding()->service(),
-            );
         });
 
         return $container;
