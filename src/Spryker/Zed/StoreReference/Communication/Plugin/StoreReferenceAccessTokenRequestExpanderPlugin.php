@@ -10,34 +10,24 @@ namespace Spryker\Zed\StoreReference\Communication\Plugin;
 use Generated\Shared\Transfer\AccessTokenRequestTransfer;
 use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\OauthClientExtension\Dependency\Plugin\AccessTokenRequestExpanderPluginInterface;
-use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
 
 /**
- * @method \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface getFacade()
+ * @method \Spryker\Zed\StoreReference\Communication\StoreReferenceCommunicationFactory getFactory()
  */
 class StoreReferenceAccessTokenRequestExpanderPlugin extends AbstractPlugin implements AccessTokenRequestExpanderPluginInterface
 {
-    /**
-     * @var \Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface
-     */
-    protected $storeFacade;
 
     /**
-     * @param \Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface $storeFacade
+     * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
+     *
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
      */
-    public function __construct(StoreReferenceToStoreInterface $storeFacade)
-    {
-        $this->storeFacade = $storeFacade;
-    }
-
     public function expand(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer
     {
-        $storeName = $this->storeFacade->getCurrentStore();
-
-        $storeTransfer = $this->getFacade()->getStoreByStoreName($storeName);
-
-        // TODO: set data to $accessTokenRequestTransfer
-
-        return $accessTokenRequestTransfer;
+        return $this->getFactory()
+            ->createStoreReferenceAccessTokenRequestExpander()
+            ->expand($accessTokenRequestTransfer);
     }
 }
