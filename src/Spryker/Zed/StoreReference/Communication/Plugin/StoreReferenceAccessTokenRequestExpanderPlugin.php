@@ -16,8 +16,12 @@ use Spryker\Zed\OauthClientExtension\Dependency\Plugin\AccessTokenRequestExpande
  */
 class StoreReferenceAccessTokenRequestExpanderPlugin extends AbstractPlugin implements AccessTokenRequestExpanderPluginInterface
 {
-
     /**
+     * {@inheritDoc}
+     * - Expands access token request with store reference.
+     *
+     * @api
+     *
      * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
      *
      * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
