@@ -56,14 +56,13 @@ class StoreReferenceMessageAttributeProviderPluginTest extends Unit
      */
     public function testProvideMessageAttributesAddsStoreReferenceWhenItExists(): void
     {
-        $this->markTestSkipped('can\'t mock configuration');
-
         // Arrange
         $this->mockStoreFacadeDefaultStore();
         $this->tester->mockStoreNameReferenceMap(static::STORE_NAME_REFERENCE_MAP);
 
         $messageAttributesTransfer = new MessageAttributesTransfer();
         $storeReferenceMessageAttributeProviderPlugin = new StoreReferenceMessageAttributeProviderPlugin();
+        $storeReferenceMessageAttributeProviderPlugin->setFacade($this->tester->getFacade());
 
         // Act
         $messageAttributesTransfer = $storeReferenceMessageAttributeProviderPlugin->provideMessageAttributes($messageAttributesTransfer);
@@ -78,8 +77,10 @@ class StoreReferenceMessageAttributeProviderPluginTest extends Unit
     public function testProvideMessageAttributesDoesNotAddStoreReferenceWhenTenantIdentifierDoesNotExists(): void
     {
         // Arrange
+        $this->tester->mockStoreNameReferenceMap(static::STORE_NAME_REFERENCE_MAP);
         $messageAttributesTransfer = new MessageAttributesTransfer();
         $storeReferenceMessageAttributeProviderPlugin = new StoreReferenceMessageAttributeProviderPlugin();
+        $storeReferenceMessageAttributeProviderPlugin->setFacade($this->tester->getFacade());
 
         // Act
         $messageAttributesTransfer = $storeReferenceMessageAttributeProviderPlugin->provideMessageAttributes($messageAttributesTransfer);

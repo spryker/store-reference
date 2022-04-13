@@ -95,7 +95,7 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     {
         $storeTransfer = $this->storeFacade->getCurrentStore();
         $storeName = $storeTransfer->getNameOrFail();
-        $storeReferenceMap = array_flip($this->storeReferenceConfig->getStoreNameReferenceMap());
+        $storeReferenceMap = $this->storeReferenceConfig->getStoreNameReferenceMap();
 
         if (empty($storeReferenceMap[$storeName])) {
             throw new StoreReferenceNotFoundException(
