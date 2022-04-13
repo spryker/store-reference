@@ -6,14 +6,18 @@
     "require": {
         "php": ">=7.4",
         "spryker/kernel": "^3.30.0",
-        "spryker/store": "^1.2.0",
         "spryker/message-broker-extension": "^1.0.0",
+        "spryker/store": "^1.2.0",
         "spryker/transfer": "^3.25.0"
     },
     "require-dev": {
         "spryker/code-sniffer": "*",
+        "spryker/log": "*",
         "spryker/propel": "*",
         "spryker/testify": "*"
+    },
+    "suggest": {
+        "spryker/log": "If you want to use the StoreReferenceMessageValidatorPlugin."
     },
     "autoload": {
         "psr-4": {
