@@ -8,8 +8,8 @@
 namespace Spryker\Zed\StoreReference\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
-use Spryker\Zed\StoreReference\Business\Model\StoreReferenceReader;
-use Spryker\Zed\StoreReference\Business\Model\StoreReferenceReaderInterface;
+use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReader;
+use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface;
 use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
 use Spryker\Zed\StoreReference\Dependency\Service\StoreReferenceToUtilEncodingServiceInterface;
 use Spryker\Zed\StoreReference\StoreReferenceDependencyProvider;
@@ -20,7 +20,7 @@ use Spryker\Zed\StoreReference\StoreReferenceDependencyProvider;
 class StoreReferenceBusinessFactory extends AbstractBusinessFactory
 {
     /**
-     * @return \Spryker\Zed\StoreReference\Business\Model\StoreReferenceReaderInterface
+     * @return \Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface
      */
     public function createStoreReferenceMap(): StoreReferenceReaderInterface
     {
