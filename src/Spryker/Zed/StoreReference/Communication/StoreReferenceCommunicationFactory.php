@@ -15,7 +15,6 @@ use Spryker\Zed\StoreReference\StoreReferenceDependencyProvider;
 
 /**
  * @method \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface getFacade()
- * @method \Spryker\Zed\StoreReference\StoreReferenceConfig getConfig()
  */
 class StoreReferenceCommunicationFactory extends AbstractCommunicationFactory
 {
