@@ -30,7 +30,7 @@ interface StoreReferenceFacadeInterface
     /**
      * Specification:
      * - Finds Store by storeName.
-     * - Returns StoreTransfer if Store wuth provided storeName has storeReference, otherwise throws the exception.
+     * - Returns StoreTransfer if Store has provided storeReference, otherwise throws the exception.
      * - Expands StoreTransfer before being returned.
      *
      * @api
