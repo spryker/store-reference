@@ -89,6 +89,8 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
     }
 
     /**
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
+     *
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
     public function getCurrentStore(): StoreTransfer

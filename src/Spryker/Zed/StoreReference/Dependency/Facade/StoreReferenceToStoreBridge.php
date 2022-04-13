@@ -34,7 +34,6 @@ class StoreReferenceToStoreBridge implements StoreReferenceToStoreInterface
         return $this->storeFacade->getStoreByName($storeName);
     }
 
-
     /**
      * @return \Generated\Shared\Transfer\StoreTransfer
      */

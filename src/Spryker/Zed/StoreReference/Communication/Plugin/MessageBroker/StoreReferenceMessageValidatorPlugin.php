@@ -15,6 +15,7 @@ use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundExceptio
 
 /**
  * @method \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface getFacade()
+ * @method \Spryker\Zed\StoreReference\StoreReferenceConfig getConfig()
  */
 class StoreReferenceMessageValidatorPlugin extends AbstractPlugin implements MessageValidatorPluginInterface
 {
@@ -26,6 +27,10 @@ class StoreReferenceMessageValidatorPlugin extends AbstractPlugin implements Mes
     protected const VALIDATION_ERROR_STORE_REFERENCE_ERROR = 'Invalid storeReference in message "%s"';
 
     /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
      * @param \Spryker\Shared\Kernel\Transfer\TransferInterface $messageTransfer
      *
      * @return bool

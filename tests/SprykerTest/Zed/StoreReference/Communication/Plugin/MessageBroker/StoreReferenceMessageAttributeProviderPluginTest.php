@@ -23,13 +23,13 @@ use Spryker\Zed\StoreReference\StoreReferenceDependencyProvider;
  * @group Communication
  * @group Plugin
  * @group MessageBroker
- * @group StoreReferenceMessageAttributeProviderPlugin
+ * @group StoreReferenceMessageAttributeProviderPluginTest
  * Add your own group annotations below this line
  */
 class StoreReferenceMessageAttributeProviderPluginTest extends Unit
 {
     /**
-     * @var string
+     * @var array
      */
     protected const STORE_NAME_REFERENCE_MAP = [
         'boo' => 'development_test-boo',

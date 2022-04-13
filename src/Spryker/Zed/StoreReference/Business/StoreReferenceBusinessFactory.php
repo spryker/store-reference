@@ -8,8 +8,6 @@
 namespace Spryker\Zed\StoreReference\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
-use Spryker\Zed\MessageBroker\Business\StoreReferenceReceiver\StoreReferenceReceiver;
-use Spryker\Zed\MessageBroker\Business\StoreReferenceReceiver\StoreReferenceReceiverInterface;
 use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReader;
 use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface;
 use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
