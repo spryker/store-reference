@@ -46,4 +46,18 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
     {
         return $this->getFactory()->createStoreReferenceMap()->getStoreByStoreName($storeName);
     }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
+     */
+    public function getCurrentStore(): StoreTransfer
+    {
+        return $this->getFactory()->createStoreReferenceMap()->getCurrentStore();
+    }
 }

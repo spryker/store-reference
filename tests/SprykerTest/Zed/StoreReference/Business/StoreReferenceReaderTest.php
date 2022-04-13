@@ -23,7 +23,7 @@ use Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundExceptio
 class StoreReferenceReaderTest extends Unit
 {
     /**
-     * @var \SprykerTest\Zed\StoreReference\StoreReferenceTester
+     * @var \SprykerTest\Zed\StoreReference\StoreReferenceBusinessTester
      */
     protected $tester;
 

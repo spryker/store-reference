@@ -87,4 +87,24 @@ class StoreReferenceReader implements StoreReferenceReaderInterface
 
         return $storeTransfer;
     }
+
+    /**
+     * @return \Generated\Shared\Transfer\StoreTransfer
+     */
+    public function getCurrentStore(): StoreTransfer
+    {
+        $storeTransfer = $this->storeFacade->getCurrentStore();
+        $storeName = $storeTransfer->getNameOrFail();
+        $storeReferenceMap = array_flip($this->storeReferenceConfig->getStoreNameReferenceMap());
+
+        if (empty($storeReferenceMap[$storeName])) {
+            throw new StoreReferenceNotFoundException(
+                sprintf('StoreReference was not found by StoreName: %s', $storeName),
+            );
+        }
+
+        $storeTransfer->setStoreReference($storeReferenceMap[$storeName]);
+
+        return $storeTransfer;
+    }
 }
