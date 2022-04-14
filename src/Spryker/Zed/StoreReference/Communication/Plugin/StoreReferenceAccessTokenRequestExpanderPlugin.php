@@ -13,6 +13,7 @@ use Spryker\Zed\OauthClientExtension\Dependency\Plugin\AccessTokenRequestExpande
 
 /**
  * @method \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface getFacade()
+ * @method \Spryker\Zed\StoreReference\StoreReferenceConfig getConfig()
  */
 class StoreReferenceAccessTokenRequestExpanderPlugin extends AbstractPlugin implements AccessTokenRequestExpanderPluginInterface
 {

@@ -37,8 +37,6 @@ class StoreReferenceAccessTokenRequestExpander implements StoreReferenceAccessTo
     /**
      * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
      *
-     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
-     *
      * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
      */
     public function expand(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer
