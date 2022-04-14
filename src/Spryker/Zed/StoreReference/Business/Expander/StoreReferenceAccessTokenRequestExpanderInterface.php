@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\StoreReference\Communication\Expander;
+namespace Spryker\Zed\StoreReference\Business\Expander;
 
 use Generated\Shared\Transfer\AccessTokenRequestTransfer;
 

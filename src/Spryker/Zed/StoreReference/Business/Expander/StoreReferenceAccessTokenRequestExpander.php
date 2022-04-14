@@ -5,7 +5,7 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\StoreReference\Communication\Expander;
+namespace Spryker\Zed\StoreReference\Business\Expander;
 
 use Generated\Shared\Transfer\AccessTokenRequestOptionsTransfer;
 use Generated\Shared\Transfer\AccessTokenRequestTransfer;
@@ -36,6 +36,8 @@ class StoreReferenceAccessTokenRequestExpander implements StoreReferenceAccessTo
 
     /**
      * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
+     *
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
      *
      * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
      */
