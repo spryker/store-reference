@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\StoreReference\Business;
 
+use Generated\Shared\Transfer\AccessTokenRequestTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 use Spryker\Zed\Kernel\Business\AbstractFacade;
 
@@ -45,5 +46,23 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
     public function getStoreByStoreName(string $storeName): StoreTransfer
     {
         return $this->getFactory()->createStoreReferenceMap()->getStoreByStoreName($storeName);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
+
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
+     */
+    public function expandAccessTokenRequest(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer
+    {
+        return $this->getFactory()
+            ->createStoreReferenceAccessTokenRequestExpander()
+            ->expand($accessTokenRequestTransfer);
     }
 }

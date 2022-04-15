@@ -8,6 +8,8 @@
 namespace Spryker\Zed\StoreReference\Business;
 
 use Spryker\Zed\Kernel\Business\AbstractBusinessFactory;
+use Spryker\Zed\StoreReference\Business\Expander\StoreReferenceAccessTokenRequestExpander;
+use Spryker\Zed\StoreReference\Business\Expander\StoreReferenceAccessTokenRequestExpanderInterface;
 use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReader;
 use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface;
 use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
@@ -15,6 +17,7 @@ use Spryker\Zed\StoreReference\StoreReferenceDependencyProvider;
 
 /**
  * @method \Spryker\Zed\StoreReference\StoreReferenceConfig getConfig()
+ * @method \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface getFacade()
  */
 class StoreReferenceBusinessFactory extends AbstractBusinessFactory
 {
@@ -35,5 +38,16 @@ class StoreReferenceBusinessFactory extends AbstractBusinessFactory
     public function getStoreFacade(): StoreReferenceToStoreInterface
     {
         return $this->getProvidedDependency(StoreReferenceDependencyProvider::FACADE_STORE);
+    }
+
+    /**
+     * @return \Spryker\Zed\StoreReference\Business\Expander\StoreReferenceAccessTokenRequestExpanderInterface
+     */
+    public function createStoreReferenceAccessTokenRequestExpander(): StoreReferenceAccessTokenRequestExpanderInterface
+    {
+        return new StoreReferenceAccessTokenRequestExpander(
+            $this->getStoreFacade(),
+            $this->getFacade(),
+        );
     }
 }

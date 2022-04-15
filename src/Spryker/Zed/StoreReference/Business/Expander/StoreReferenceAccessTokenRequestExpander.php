@@ -5,8 +5,9 @@
  * Use of this software requires acceptance of the Evaluation License Agreement. See LICENSE file.
  */
 
-namespace Spryker\Zed\StoreReference\Communication\Expander;
+namespace Spryker\Zed\StoreReference\Business\Expander;
 
+use Generated\Shared\Transfer\AccessTokenRequestOptionsTransfer;
 use Generated\Shared\Transfer\AccessTokenRequestTransfer;
 use Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface;
 use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
@@ -44,10 +45,12 @@ class StoreReferenceAccessTokenRequestExpander implements StoreReferenceAccessTo
         $storeTransfer = $this->storeReferenceFacade->getStoreByStoreName($currentStoreTransfer->getName());
 
         $accessTokenRequestOptionsTransfer = $accessTokenRequestTransfer->getAccessTokenRequestOptions();
-
-        if ($accessTokenRequestOptionsTransfer !== null) {
-            $accessTokenRequestOptionsTransfer->setStoreReference($storeTransfer->getStoreReference());
+        if ($accessTokenRequestOptionsTransfer === null) {
+            $accessTokenRequestOptionsTransfer = new AccessTokenRequestOptionsTransfer();
         }
+
+        $accessTokenRequestOptionsTransfer->setStoreReference($storeTransfer->getStoreReference());
+        $accessTokenRequestTransfer->setAccessTokenRequestOptions($accessTokenRequestOptionsTransfer);
 
         return $accessTokenRequestTransfer;
     }

@@ -12,7 +12,8 @@ use Spryker\Zed\Kernel\Communication\AbstractPlugin;
 use Spryker\Zed\OauthClientExtension\Dependency\Plugin\AccessTokenRequestExpanderPluginInterface;
 
 /**
- * @method \Spryker\Zed\StoreReference\Communication\StoreReferenceCommunicationFactory getFactory()
+ * @method \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface getFacade()
+ * @method \Spryker\Zed\StoreReference\StoreReferenceConfig getConfig()
  */
 class StoreReferenceAccessTokenRequestExpanderPlugin extends AbstractPlugin implements AccessTokenRequestExpanderPluginInterface
 {
@@ -30,8 +31,6 @@ class StoreReferenceAccessTokenRequestExpanderPlugin extends AbstractPlugin impl
      */
     public function expand(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer
     {
-        return $this->getFactory()
-            ->createStoreReferenceAccessTokenRequestExpander()
-            ->expand($accessTokenRequestTransfer);
+        return $this->getFacade()->expandAccessTokenRequest($accessTokenRequestTransfer);
     }
 }
