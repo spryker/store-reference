@@ -7,6 +7,7 @@
 
 namespace Spryker\Zed\StoreReference\Business;
 
+use Generated\Shared\Transfer\AccessTokenRequestTransfer;
 use Generated\Shared\Transfer\StoreTransfer;
 
 interface StoreReferenceFacadeInterface
@@ -42,4 +43,17 @@ interface StoreReferenceFacadeInterface
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
     public function getStoreByStoreName(string $storeName): StoreTransfer;
+
+    /**
+     * Specification:
+     * - Finds a store reference for currently selected store.
+     * - Expands `AccessTokenRequest.accessTokenRequestOptions` with found store reference.
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
+     *
+     * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
+     */
+    public function expandAccessTokenRequest(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer;
 }
