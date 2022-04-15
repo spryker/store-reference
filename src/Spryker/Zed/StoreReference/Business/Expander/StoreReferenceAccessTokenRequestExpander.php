@@ -9,7 +9,7 @@ namespace Spryker\Zed\StoreReference\Business\Expander;
 
 use Generated\Shared\Transfer\AccessTokenRequestOptionsTransfer;
 use Generated\Shared\Transfer\AccessTokenRequestTransfer;
-use Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface;
+use Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface;
 use Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface;
 
 class StoreReferenceAccessTokenRequestExpander implements StoreReferenceAccessTokenRequestExpanderInterface
@@ -22,16 +22,16 @@ class StoreReferenceAccessTokenRequestExpander implements StoreReferenceAccessTo
     /**
      * @var \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface
      */
-    protected $storeReferenceFacade;
+    protected $storeReferenceReader;
 
     /**
      * @param \Spryker\Zed\StoreReference\Dependency\Facade\StoreReferenceToStoreInterface $storeFacade
-     * @param \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface $storeReferenceFacade
+     * @param \Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface $storeReferenceReader
      */
-    public function __construct(StoreReferenceToStoreInterface $storeFacade, StoreReferenceFacadeInterface $storeReferenceFacade)
+    public function __construct(StoreReferenceToStoreInterface $storeFacade, StoreReferenceReaderInterface $storeReferenceReader)
     {
         $this->storeFacade = $storeFacade;
-        $this->storeReferenceFacade = $storeReferenceFacade;
+        $this->storeReferenceReader = $storeReferenceReader;
     }
 
     /**
@@ -42,7 +42,7 @@ class StoreReferenceAccessTokenRequestExpander implements StoreReferenceAccessTo
     public function expand(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer
     {
         $currentStoreTransfer = $this->storeFacade->getCurrentStore();
-        $storeTransfer = $this->storeReferenceFacade->getStoreByStoreName($currentStoreTransfer->getName());
+        $storeTransfer = $this->storeReferenceReader->getStoreByStoreName($currentStoreTransfer->getName());
 
         $accessTokenRequestOptionsTransfer = $accessTokenRequestTransfer->getAccessTokenRequestOptions();
         if ($accessTokenRequestOptionsTransfer === null) {

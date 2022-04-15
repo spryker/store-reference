@@ -57,7 +57,7 @@ class StoreReferenceBusinessFactory extends AbstractBusinessFactory
     {
         return new StoreReferenceAccessTokenRequestExpander(
             $this->getStoreFacade(),
-            $this->getFacade(),
+            $this->createStoreReferenceMap(),
         );
     }
 }
