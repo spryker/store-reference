@@ -29,7 +29,7 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
      */
     public function getStoreByStoreReference(string $storeReference): StoreTransfer
     {
-        return $this->getFactory()->createStoreReferenceMap()->getStoreByStoreReference($storeReference);
+        return $this->getFactory()->createStoreReferenceReader()->getStoreByStoreReference($storeReference);
     }
 
     /**
@@ -45,7 +45,7 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
      */
     public function getStoreByStoreName(string $storeName): StoreTransfer
     {
-        return $this->getFactory()->createStoreReferenceMap()->getStoreByStoreName($storeName);
+        return $this->getFactory()->createStoreReferenceReader()->getStoreByStoreName($storeName);
     }
 
     /**
@@ -59,7 +59,7 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
      */
     public function getCurrentStore(): StoreTransfer
     {
-        return $this->getFactory()->createStoreReferenceMap()->getCurrentStore();
+        return $this->getFactory()->createStoreReferenceReader()->getCurrentStore();
     }
 
     /**
