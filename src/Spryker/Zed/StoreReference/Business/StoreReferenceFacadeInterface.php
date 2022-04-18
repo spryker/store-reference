@@ -31,7 +31,7 @@ interface StoreReferenceFacadeInterface
     /**
      * Specification:
      * - Finds Store by storeName.
-     * - Returns StoreTransfer if Store wuth provided storeName has storeReference, otherwise throws the exception.
+     * - Returns StoreTransfer if Store has provided storeReference, otherwise throws the exception.
      * - Expands StoreTransfer before being returned.
      *
      * @api
@@ -43,6 +43,19 @@ interface StoreReferenceFacadeInterface
      * @return \Generated\Shared\Transfer\StoreTransfer
      */
     public function getStoreByStoreName(string $storeName): StoreTransfer;
+
+    /**
+     * Specification:
+     * - Gets current store.
+     * - Expands StoreTransfer with storeReference before being returned.
+     *
+     * @api
+     *
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
+     */
+    public function getCurrentStore(): StoreTransfer;
 
     /**
      * Specification:
