@@ -15,4 +15,12 @@
         <property name="storeReference" type="string"/>
     </transfer>
 
+    <transfer name="AccessTokenRequest">
+        <property name="accessTokenRequestOptions" type="AccessTokenRequestOptions"/>
+    </transfer>
+
+    <transfer name="AccessTokenRequestOptions">
+        <property name="storeReference" type="string"/>
+    </transfer>
+
 </transfers>
