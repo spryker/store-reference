@@ -79,22 +79,4 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
             ->createStoreReferenceAccessTokenRequestExpander()
             ->expand($accessTokenRequestTransfer);
     }
-
-    /**
-     * {@inheritDoc}
-     *
-     * @api
-     *
-     * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
-
-     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
-     *
-     * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
-     */
-    public function expandAccessTokenRequest(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer
-    {
-        return $this->getFactory()
-            ->createStoreReferenceAccessTokenRequestExpander()
-            ->expand($accessTokenRequestTransfer);
-    }
 }
