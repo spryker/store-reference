@@ -24,7 +24,7 @@ class StoreReferenceBusinessFactory extends AbstractBusinessFactory
     /**
      * @return \Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface
      */
-    public function createStoreReferenceMap(): StoreReferenceReaderInterface
+    public function createStoreReferenceReader(): StoreReferenceReaderInterface
     {
         return new StoreReferenceReader(
             $this->getConfig(),
@@ -47,7 +47,7 @@ class StoreReferenceBusinessFactory extends AbstractBusinessFactory
     {
         return new StoreReferenceAccessTokenRequestExpander(
             $this->getStoreFacade(),
-            $this->createStoreReferenceMap(),
+            $this->createStoreReferenceReader(),
         );
     }
 }

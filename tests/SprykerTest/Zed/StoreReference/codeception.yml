@@ -12,9 +12,9 @@ coverage:
     whitelist: { include: ['../../../../src/*'] }
 
 suites:
-    Service:
-        path: .
-        class_name: StoreReferenceTester
+    Business:
+        path: Business
+        class_name: StoreReferenceBusinessTester
         modules:
             enabled:
                 - Asserts
@@ -25,3 +25,14 @@ suites:
                 - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
                 - \SprykerTest\Shared\Propel\Helper\TransactionHelper
                 - \SprykerTest\Zed\StoreReference\Helper\StoreReferenceHelper
+
+    Communication:
+        path: Communication
+        class_name: StoreReferenceCommunicationTester
+        modules:
+            enabled:
+                - Asserts
+                - \SprykerTest\Shared\Testify\Helper\Environment
+                - \SprykerTest\Shared\Testify\Helper\ConfigHelper
+                - \SprykerTest\Zed\Testify\Helper\Business\BusinessHelper
+                - \SprykerTest\Shared\Testify\Helper\DependencyHelper

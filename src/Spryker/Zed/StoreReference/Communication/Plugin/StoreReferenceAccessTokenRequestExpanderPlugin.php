@@ -19,7 +19,8 @@ class StoreReferenceAccessTokenRequestExpanderPlugin extends AbstractPlugin impl
 {
     /**
      * {@inheritDoc}
-     * - Expands access token request with store reference.
+     * - Finds a store reference for currently selected store.
+     * - Expands `AccessTokenRequest.accessTokenRequestOptions` with found store reference.
      *
      * @api
      *

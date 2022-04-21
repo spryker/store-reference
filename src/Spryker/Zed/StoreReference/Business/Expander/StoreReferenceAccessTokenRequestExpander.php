@@ -20,7 +20,7 @@ class StoreReferenceAccessTokenRequestExpander implements StoreReferenceAccessTo
     protected $storeFacade;
 
     /**
-     * @var \Spryker\Zed\StoreReference\Business\StoreReferenceFacadeInterface
+     * @var \Spryker\Zed\StoreReference\Business\Reader\StoreReferenceReaderInterface
      */
     protected $storeReferenceReader;
 
@@ -42,7 +42,7 @@ class StoreReferenceAccessTokenRequestExpander implements StoreReferenceAccessTo
     public function expand(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer
     {
         $currentStoreTransfer = $this->storeFacade->getCurrentStore();
-        $storeTransfer = $this->storeReferenceReader->getStoreByStoreName($currentStoreTransfer->getName());
+        $storeTransfer = $this->storeReferenceReader->getStoreByStoreName($currentStoreTransfer->getNameOrFail());
 
         $accessTokenRequestOptionsTransfer = $accessTokenRequestTransfer->getAccessTokenRequestOptions();
         if ($accessTokenRequestOptionsTransfer === null) {

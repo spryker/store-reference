@@ -29,7 +29,7 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
      */
     public function getStoreByStoreReference(string $storeReference): StoreTransfer
     {
-        return $this->getFactory()->createStoreReferenceMap()->getStoreByStoreReference($storeReference);
+        return $this->getFactory()->createStoreReferenceReader()->getStoreByStoreReference($storeReference);
     }
 
     /**
@@ -45,7 +45,39 @@ class StoreReferenceFacade extends AbstractFacade implements StoreReferenceFacad
      */
     public function getStoreByStoreName(string $storeName): StoreTransfer
     {
-        return $this->getFactory()->createStoreReferenceMap()->getStoreByStoreName($storeName);
+        return $this->getFactory()->createStoreReferenceReader()->getStoreByStoreName($storeName);
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\StoreTransfer
+     */
+    public function getCurrentStore(): StoreTransfer
+    {
+        return $this->getFactory()->createStoreReferenceReader()->getCurrentStore();
+    }
+
+    /**
+     * {@inheritDoc}
+     *
+     * @api
+     *
+     * @param \Generated\Shared\Transfer\AccessTokenRequestTransfer $accessTokenRequestTransfer
+
+     * @throws \Spryker\Zed\StoreReference\Business\Exception\StoreReferenceNotFoundException
+     *
+     * @return \Generated\Shared\Transfer\AccessTokenRequestTransfer
+     */
+    public function expandAccessTokenRequest(AccessTokenRequestTransfer $accessTokenRequestTransfer): AccessTokenRequestTransfer
+    {
+        return $this->getFactory()
+            ->createStoreReferenceAccessTokenRequestExpander()
+            ->expand($accessTokenRequestTransfer);
     }
 
     /**
