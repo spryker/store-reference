@@ -38,8 +38,8 @@ class StoreReferenceMessageAttributeProviderPlugin extends AbstractPlugin implem
         $storeReference = $storeTransfer->getStoreReference();
         $messageAttributesTransfer->setStoreReference($storeReference);
 
-        $publisher = $messageAttributesTransfer->getPublisher() ?? $storeReference;
-        $messageAttributesTransfer->setPublisher($publisher);
+        $emitter = $messageAttributesTransfer->getEmitter() ?? $storeReference;
+        $messageAttributesTransfer->setEmitter($emitter);
 
         return $messageAttributesTransfer;
     }
