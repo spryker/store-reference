@@ -4,6 +4,9 @@
 
 StoreReference module is responsible for retrieving storeReference or storeName from configuration.
 
+**DEPRECATED - This module is not continued at this point.**
+Please use [spryker/store](https://github.com/spryker/store) instead.
+
 ## Installation
 
 ```
